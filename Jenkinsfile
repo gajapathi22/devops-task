@@ -181,12 +181,24 @@ pipeline {
                 }
             }
         }
+        
+        stage('Cleanup') {
+            steps {
+                script {
+                    echo '🧹 Cleaning up Docker images...'
+                    sh '''
+                        # Clean up inside the container where docker is available
+                        docker system prune -f || true
+                        echo "✅ Cleanup completed"
+                    '''
+                }
+            }
+        }
     }
     
     post {
         always {
-            echo '🧹 Cleaning up...'
-            sh 'docker system prune -f || true'
+            echo '🏁 Pipeline execution completed'
         }
         success {
             echo '🎉 Pipeline completed successfully!'
