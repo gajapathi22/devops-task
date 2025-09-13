@@ -10,7 +10,7 @@ pipeline {
         DOCKER_IMAGE = "${ECR_REGISTRY}/${ECR_REPOSITORY}"
         
         // GitHub repository
-        GITHUB_REPO = 'https://github.com/YOUR_USERNAME/devops-task.git'
+        GITHUB_REPO = 'https://github.com/gajapathi22/devops-task.git'
     }
     
     stages {
