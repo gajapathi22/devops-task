@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-task-app
+  labels:
+    app: devops-task-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-task-app
+  template:
+    metadata:
+      labels:
+        app: devops-task-app
+    spec:
+      containers:
+        - name: devops-task-app
+          image: 351531845608.dkr.ecr.ap-south-1.amazonaws.com/devops-task:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"
